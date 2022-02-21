@@ -48,4 +48,25 @@ public class Pilha {
         return refNoEntradaPilha == null ? true : false; //forma simplificada do código comentado acima
 
     }
+
+    @Override
+    public String toString() {
+
+        String stringRetorno = "-------------\n";
+        stringRetorno += "    Pilha    \n";
+        stringRetorno += "-------------\n";
+
+        No noAuxiliar = refNoEntradaPilha;
+
+        while(true){
+            if (noAuxiliar != null){
+                stringRetorno += "[No{dado=" + noAuxiliar.getDado() +"}]\n";
+                noAuxiliar = noAuxiliar.getRefNo();
+            }else{
+                break;
+            }
+        }
+        stringRetorno += "=============\n";
+        return stringRetorno;
+    }
 }
