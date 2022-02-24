@@ -23,6 +23,7 @@ public class Fila {
                     break;
                 }
             }
+            return primeiroNo;
         }
         return null;
     }
@@ -46,7 +47,7 @@ public class Fila {
     }
 
     public boolean isEmpty(){
-        return refNoEntradaFila = null? true : false;
+        return refNoEntradaFila == null? true : false;
     }
 
     @Override
@@ -56,8 +57,7 @@ public class Fila {
 
         if (refNoEntradaFila != null){
             while (true) {
-                stringRetorno += '[No{objeto=' + noAuxiliar.getObject() + "]}--->";
-                noAuxiliar = noAuxiliar.getRefNo();
+                stringRetorno += "[No{objeto=" + noAuxiliar.getObject() + "}]--->";
                 if (noAuxiliar.getRefNo() != null){
                     noAuxiliar = noAuxiliar.getRefNo();
                 }else{
