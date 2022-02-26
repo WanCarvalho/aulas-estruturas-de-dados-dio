@@ -36,7 +36,7 @@ public class ListaEncadeada<T> {
         No<T> noAuxiliar = refEntrada;
         No<T> noRetorno = null;
 
-        for (int i = 0; i < this.size()-1; i++){
+        for (int i = 0; i <= index; i++){
             noRetorno = noAuxiliar;
             noAuxiliar = noAuxiliar.getProximoNo();
         }
@@ -89,5 +89,19 @@ public class ListaEncadeada<T> {
     //método isEmpty: para verificar se a lista está vazia
     public boolean isEmpty(){
         return refEntrada == null ? true : false;
+    }
+
+    @Override
+    public String toString() {
+        String strRetorno = "";
+        No<T> noAuxiliar = refEntrada;
+        for (int i = 0; i < this.size(); i++){
+            strRetorno += "[No{conteudo=" + noAuxiliar.getConteudo() + "}]-->";
+            noAuxiliar = noAuxiliar.getProximoNo();
+
+        }
+        strRetorno += "null";
+
+        return strRetorno;
     }
 }
