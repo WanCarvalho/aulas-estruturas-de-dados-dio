@@ -34,6 +34,7 @@ public class ListaDuplamenteEncadeada<T> {
         tamanhoLista++;
     }
 
+    //método add() com sobrecarga dos parâmetros de entrada, +index/índice
     public void add(int index, T elemento){
         NoDuplo<T> noAuxiliar = getNo(index);
         NoDuplo<T> novoNo = new NoDuplo<>(elemento);
@@ -53,6 +54,25 @@ public class ListaDuplamenteEncadeada<T> {
             novoNo.getNoPrevio().setNoProximo(novoNo);
         }
         tamanhoLista++;
+    }
+
+    //método remove() para remover nó utilizando o index/índice
+    public void remove(int index){
+        if (index == 0){
+            primeiroNo = primeiroNo.getNoProximo();
+            if (primeiroNo != null){
+                primeiroNo.setNoPrevio(null);
+            }
+        }else{
+            NoDuplo<T> noAuxiliar = getNo(index);
+            noAuxiliar.getNoPrevio().setNoProximo(noAuxiliar.getNoProximo());
+            if (noAuxiliar != ultimoNo){
+                noAuxiliar.getNoProximo().setNoPrevio(noAuxiliar.getNoPrevio());
+            }else{
+                ultimoNo = noAuxiliar;
+            }
+        }
+        this.tamanhoLista--;
     }
 
     //método usado para pegar valor do index/índice passado. o método pecorre a lista até chegar ao index/índice passado
