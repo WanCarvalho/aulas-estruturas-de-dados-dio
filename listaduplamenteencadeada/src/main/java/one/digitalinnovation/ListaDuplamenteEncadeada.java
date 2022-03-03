@@ -50,8 +50,8 @@ public class ListaDuplamenteEncadeada<T> {
 
         if (index == 0){
             primeiroNo = novoNo;
-        }else{
-            novoNo.getNoPrevio().setNoProximo(novoNo);
+        }else {
+            novoNo.setNoProximo(novoNo);
         }
         tamanhoLista++;
     }
