@@ -16,7 +16,43 @@ public class ListaDuplamenteEncadeada<T> {
 
     //pega o conteudo do nó referente ao index/índice passado
     public T get(int index){
-        return this.getNo(index);
+        return this.getNo(index).getConteudo();
+    }
+
+    //método usado para adicionar nó's na lista
+    public void add(T elemento){
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+        novoNo.setNoProximo(null);
+        novoNo.setNoPrevio(ultimoNo);
+        if (primeiroNo == null){
+            primeiroNo = novoNo;
+        }
+        if (ultimoNo != null){
+            ultimoNo.setNoProximo(novoNo);
+        }
+        ultimoNo = novoNo;
+        tamanhoLista++;
+    }
+
+    public void add(int index, T elemento){
+        NoDuplo<T> noAuxiliar = getNo(index);
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+        novoNo.setNoProximo(noAuxiliar);
+
+        if (novoNo.getNoProximo() != null){
+            novoNo.setNoProximo(noAuxiliar.getNoPrevio());
+            novoNo.getNoProximo().setNoPrevio(novoNo);
+        }else{
+            novoNo.setNoPrevio(ultimoNo);
+            ultimoNo = novoNo;
+        }
+
+        if (index == 0){
+            primeiroNo = novoNo;
+        }else{
+            novoNo.getNoPrevio().setNoProximo(novoNo);
+        }
+        tamanhoLista++;
     }
 
     //método usado para pegar valor do index/índice passado. o método pecorre a lista até chegar ao index/índice passado
@@ -31,7 +67,7 @@ public class ListaDuplamenteEncadeada<T> {
 
     //retorna tamanho da lista duplamente encadeada
     public int size(){
-        return tamanhoLista;
+        return this.tamanhoLista;
     }
 
 }
