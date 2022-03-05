@@ -79,4 +79,21 @@ public class ListaCircular<T> {
     public int size(){
         return this.tamanhoLista;
     }
+
+    @Override
+    public String toString() {
+        String strRetorno = "";
+
+        No<T> noAuxiliar = this.cauda;
+        //for para correr a lista e ir concatenando na variável strRetorno os conteudos dos índices
+        for (int i = 0; i < this.size();i++){
+            strRetorno += "[No{conteudo=" + noAuxiliar.getConteudo() + "}]--->";
+            //variável noAuxiliar para sempre pegar o conteudo do próximo Nó
+            noAuxiliar = noAuxiliar.getNoProximo();
+        }
+
+        strRetorno += this.size() != 0 ? "(Retorna ao início)" : "[]";
+
+        return strRetorno;
+    }
 }
