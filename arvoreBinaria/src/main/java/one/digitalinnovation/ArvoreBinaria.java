@@ -25,4 +25,47 @@ public class ArvoreBinaria<T extends Comparable<T>> {
         }
         return atual;
     }
+
+    //exibe em ordem crescente em relação a todos os Nó's da árvore
+    public void exibirInOrdem(){
+        System.out.println("\n Exibindo em ordem");
+        exibirInOrdem(this.raiz);
+    }
+
+    private void exibirInOrdem(BinNo<T> atual){
+        if (atual != null){
+            exibirInOrdem(atual.getNoEsq());
+            System.out.println(atual.getConteudo() + ", ");
+            exibirInOrdem(atual.getNoDir());
+        }
+    }
+
+    //visita primeiro para depois exibir, vai exibindo os Nó's mais abaixo priorizando os da esquerda e terminando exibindo as raízes
+    public void exibirPosOrdem(){
+        System.out.println("\n Exibindo pós ordem");
+        exibirPosOrdem(this.raiz);
+    }
+
+    private void exibirPosOrdem(BinNo<T> atual){
+        if (atual != null){
+            exibirPosOrdem(atual.getNoEsq());
+            exibirPosOrdem(atual.getNoDir());
+            System.out.println(atual.getConteudo() + ", ");
+        }
+    }
+
+    //
+    public void exibirPreOrdem(){
+        System.out.println("\n Exibindo pré ordem");
+        exibirPosOrdem(this.raiz);
+    }
+
+    private void exibirPreOrdem(BinNo<T> atual){
+        if (atual != null){
+            System.out.println(atual.getConteudo() + ", ");
+            exibirPreOrdem(atual.getNoEsq());
+            exibirPreOrdem(atual.getNoDir());
+        }
+    }
+
 }
