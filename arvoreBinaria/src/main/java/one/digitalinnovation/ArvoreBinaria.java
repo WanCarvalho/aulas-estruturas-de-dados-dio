@@ -91,7 +91,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
                 System.out.println("Conteudo nao encontrado. Bloco Try");
             }
 
-            //primeira sequência de if's encadeados para algumas situações da árvore binária
+            //primeira sequência de if's encadeados para algumas situações da árvore binária (se estiver na raiz)
             if(pai == null){
                 if (atual.getNoDir() == null){
                     this.raiz = atual.getNoEsq();
@@ -110,9 +110,14 @@ public class ArvoreBinaria<T extends Comparable<T>> {
                     filho.setNoDir(raiz.getNoDir());
                     raiz = filho;
                 }
-            }else if (atual.getNoDir() == null){
+            }else if (atual.getNoDir() == null){ //caso a referência do Nó a direita seja nulo
+                if (pai.getNoEsq() == atual){
+                    pai.setNoEsq(atual.getNoEsq());
+                }else{
+                    pai.setNoDir(atual.getNoEsq());
+                }
 
-            }else if (atual.getNoEsq() == null){
+            }else if (atual.getNoEsq() == null){ //caso a referência do Nó a esquerda seja nulo
 
             }else{
 
